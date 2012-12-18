@@ -1,0 +1,10 @@
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\bin\Release\JavaExtensionParser.exe
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\bin\Release\JavaExtensionParser.pdb
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\ResolveAssemblyReference.cache
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\JavaExtensionParser.Delete.resources
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\JavaExtensionParser.frm_main.resources
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\JavaExtensionParser.Properties.Resources.resources
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\GenerateResource.read.1.tlog
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\GenerateResource.write.1.tlog
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\JavaExtensionParser.exe
+Y:\test trunk 2\trunk\3rdparty\JavaExtensionParser\JavaExtensionParser\obj\x86\Release\JavaExtensionParser.pdb
