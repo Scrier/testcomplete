@@ -1,0 +1,323 @@
+<classes>
+	<class namespace="_GENERATED" classname="SHELL" id="1">
+		<objectname>Shell</objectname>
+		<constructor>
+			<param type="string">name</param>
+		</constructor>
+		<init>
+			<method name="_TYPE.SHELL.GetShellTypeInformation">
+				<param>this.name</param>
+				<param>this</param>
+			</method>
+			<method name="_COMMON.FciReader.PopulateShellObject">
+				<param>this</param>
+			</method>
+		</init>
+		<params>
+			<param type="string" init="&quot;Shell&quot;" classkey="yes">ObjectName</param>
+			<param type="string" init="name" comment="String with the name of the shell.">name</param>
+			<param type="int">dbID</param>
+			<param type="string">description</param>
+			<param type="int">allowedWeight</param>
+			<param type="int">validTemp</param>
+			<param type="int">longShell</param>
+			<param type="int">VMFMunition</param>
+			<param type="int">VMFAdjusting</param>
+			<param type="int">VMFFireForEffect</param>
+			<param type="string">PCDart</param>
+			<param type="string">FCICountryCode</param>
+			<param type="bool" init="true">UseSquareWeight</param>
+			<param type="var" init="_TYPE.WEIGHT.SHELLWEIGHTNORM()" comment="Either a square weight or a float weight with kg">Weight</param>
+			<param type="int" comment="The min value of squares allowed according to FCI file">SquareMinValue</param>
+			<param type="int" comment="The max value of squares allowed according to FCI file">SquareMaxValue</param>
+			<param type="int" comment="The nominal value of squares according to FCI file">SquareNomValue</param>
+			<param type="float" comment="The weight in kg for each square.">SquareWeight</param>
+			<param type="float" comment="The nominal weight in kg for the shell with fuse.">ShellNomWeight</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="FUSE" id="2">
+		<objectname>Fuse</objectname>
+		<constructor>
+			<param type="string">name</param>
+		</constructor>
+		<init>
+			<method name="_TYPE.FUSE.GetFuseTypeInformation">
+				<param>this.name</param>
+				<param>this</param>
+			</method>
+		</init>
+		<params>
+			<param type="string" init="&quot;Fuse&quot;" classkey="yes">ObjectName</param>
+			<param type="string" init="name" comment="String with the name of the fuse.">name</param>
+			<param type="int" comment="int with the database id.">dbID</param>
+			<param type="string" comment="string with the fuse description">description</param>
+			<param type="int" comment="int with the VMF Fuse integer.">VMFFuze</param>
+			<param type="int" comment="int with the VMF Registration integer.">VMFRegistration</param>
+			<param type="int" comment="int with the VMF FFE / Adjusting integer.">VMFAdjustingFFE</param>
+			<param type="string" comment="string with the pcdart information. ">PCDart</param>
+			<param type="string" comment="string with the FCI country code (NO/SE)">FCICountryCode</param>
+			<param type="int" comment="int with PIK information.">PIK</param>
+			<param type="int" comment="int defining if a shell is programmable or not.">Programmable</param>
+			<param type="int" comment="int defining time it takes to program.">TimeToProgram</param>
+			<param type="int" comment="int what parameters should be used.">FuseSettingParams</param>
+			<param type="int" comment="int defining a default setting.">DefaultSetting</param>
+			<param type="int" comment="int if a programmable fuse can be interrogated or not">canInterrogate</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="SETTING" id="3">
+		<objectname>Setting</objectname>
+		<constructor>
+			<param type="string">name</param>
+		</constructor>
+		<init>
+			<params>
+				<param type="int">index</param>
+			</params>
+			<method name="_TYPE.SETTING.GetSettingTypeInformation">
+				<param>this.name</param>
+				<param>this</param>
+				<param>index</param>
+			</method>
+			<method assignTo="this.VMFMode" name="_TYPE.SETTING.GetVMFModeFromNABK">
+				<param>this.NABKmode</param>
+			</method>
+		</init>
+		<params>
+			<param type="string" init="&quot;Setting&quot;" classkey="yes">ObjectName</param>
+			<param type="string" init="name" comment="name of the setting, used in db lookup.">name</param>
+			<param type="int" comment="database id of the setting.">dbID</param>
+			<param type="int" comment="db settings index of the setting">setting</param>
+			<param type="string" comment="string with the description.">description</param>
+			<param type="int" comment="int with the nabk fuse mode.">NABKmode</param>
+			<param type="int" comment="int with the VMF fuse mode">VMFMode</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="CHARGE" id="4">
+		<objectname>Charge</objectname>
+		<constructor>
+			<param type="string">description</param>
+		</constructor>
+		<init>
+			<method name="_TYPE.CHARGE.GetChargeTypeInformation">
+				<param>this.description</param>
+				<param>this</param>
+			</method>
+		</init>
+		<params>
+			<param type="string" init="&quot;Charge&quot;" classkey="yes">ObjectName</param>
+			<param type="string" init="description" comment="name of the description, used in db lookup.">description</param>
+			<param type="int">chargeCombID</param>
+			<param type="int">VMFPropellantType</param>
+			<param type="int">VMFPropellantSize</param>
+			<param type="string">FCI</param>
+			<param type="int">FCISize</param>
+			<param type="int">PCDart</param>
+			<param type="int">RTCharge</param>
+			<param type="string">Scope</param>
+			<param type="_GENERATED::CHARGEBOX::ChargeBox" array="yes" validate="_GENERATED.CHARGEBOX.IsChargeBoxObject" id="5">chargeBox</param>
+			<param type="bool">optionalMagPlacement</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="CHARGEBOX" id="5">
+		<objectname>ChargeBox</objectname>
+		<params>
+			<param type="string" init="&quot;ChargeBox&quot;" classkey="yes">ObjectName</param>
+			<param type="int">status</param>
+			<param type="int">lotID</param>
+			<param type="float">temperature</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="CHARGEAMMO" id="6">
+		<objectname>ChargeAmmo</objectname>
+		<params>
+			<param type="string" init="&quot;ChargeAmmo&quot;" classkey="yes">ObjectName</param>
+			<param type="int">action</param>
+			<param type="_GENERATED::CHARGEBOX::ChargeBox" array="yes" validate="_GENERATED.CHARGEBOX.IsChargeBoxObject" id="5">chargeBox</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="SHELLAMMO" id="7">
+		<objectname>ShellAmmo</objectname>
+		<params>
+			<param type="string" init="&quot;ShellAmmo&quot;" classkey="yes">ObjectName</param>
+			<param type="int">action</param>
+			<param type="int">shellID</param>
+			<param type="int">fuseID</param>
+			<param type="int">settingID</param>
+			<param type="int">weightID</param>
+			<param type="float">weightNumber</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="FMHEADER" id="8">
+		<objectname>FmHeader</objectname>
+		<params>
+			<param type="string" init="&quot;FireMissionHeader&quot;" classkey="yes">ObjectName</param>
+			<param type="bool" init="false" comment="bool to indicate if we have more than one aimpoint in a fm or not, default false.">MultipleAimpoints</param>
+			<param type="bool" init="false" comment="bool to indicate if we have more than one type of grenade in a fm or not, default false.">MultipleEffect</param>
+			<param type="bool" init="false" comment="bool to indicate of the firemission is of type bearing / elevation.">BearingElevation</param>
+			<param type="int" init="_TYPE.Constants.GetMoeWhenReady()" comment="int to indicate what type of Method of Engagement the firemission should be.">MethodOfEngagement</param>
+			<param type="Date">TimeRestriction</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="FMROUND" id="9">
+		<objectname>FmRound</objectname>
+		<init>
+			<method name="_ARCHER.FmRound.InternalRoundInit">
+				<param>this</param>
+			</method>
+		</init>
+		<params>
+			<param type="string" init="&quot;FireMissionRound&quot;" classkey="yes">ObjectName</param>
+			<param type="_GENERATED::SHELL::Shell" comment="_GENERATED::SHELL::Shell object." validate="_GENERATED.SHELL.IsShellObject" id="1">shell</param>
+			<param type="_GENERATED::FUSE::Fuse" comment="_GENERATED::FUSE::Fuse object." validate="_GENERATED.FUSE.IsFuseObject" id="2">fuse</param>
+			<param type="_GENERATED::SETTING::Setting" comment="_GENERATED::SETTING::Setting object." validate="_GENERATED.SETTING.IsSettingObject" id="3">setting</param>
+			<param type="_GENERATED::COORDINATES::Coordinate" comment="_GENERATED::COORDINATES::Coordinate object." validate="_GENERATED.COORDINATES.IsCoordinateObject" id="11">target</param>
+			<param type="int" comment="int with the effect ID the round has.">effectID</param>
+			<param type="int" comment="int Calculated Bearing that round have in mils.">CalcBearing</param>
+			<param type="int" comment="int Calculated elevation that round have in mils.">CalcElevation</param>
+			<param type="int" comment="int Bearing that round have in mils.">Bearing</param>
+			<param type="int" comment="int elevation that round have in mils.">Elevation</param>
+			<param type="_GENERATED::CHARGE::Charge" init="_ARCHER.Charge.GetNewCharge(_TYPE.Constants.DM72_6PLUS());" comment="Charge charge that the round should use." id="4">Charge</param>
+			<param type="int" comment="int ProgrammableFuseSetting time to program fuse to.">ProgrammableFuseSetting</param>
+			<param type="_GENERATED::COORDINATES::Coordinate" comment="_GENERATED::COORDINATES::Coordinate object." validate="_GENERATED.COORDINATES.IsCoordinateObject" id="11">BipCoordinate</param>
+			<param type="int" comment="Estimated Mvv for Excalibur grenades.">EstimatedMvv</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="FM" id="10">
+		<objectname>Fm</objectname>
+		<params>
+			<param type="string" init="&quot;FM&quot;" classkey="yes">ObjectName</param>
+			<param type="_GENERATED::FMHEADER::FmHeader" init="_GENERATED.FMHEADER.GetNewFmHeader()" validate="_GENERATED.FMHEADER.IsFmHeaderObject" id="8">header</param>
+			<param type="_GENERATED::FMROUND::FmRound" array="yes" validate="_GENERATED.FMROUND.IsFmRoundObject" id="9">rounds</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="COORDINATES" id="11">
+		<objectname>Coordinate</objectname>
+		<params>
+			<param type="string" init="&quot;Coordinate&quot;" classkey="yes">ObjectName</param>
+			<param type="string">name</param>
+			<param type="string">zone</param>
+			<param type="int">easting</param>
+			<param type="int">northing</param>
+			<param type="int">altitude</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="CHARGEMAG" id="12">
+		<objectname>ChargeMag</objectname>
+		<params>
+			<param type="string" init="&quot;ChargeMag&quot;" classkey="yes">ObjectName</param>
+			<param type="_GENERATED::CHARGE::Charge" array="yes" validate="_GENERATED.CHARGE.IsChargeObject" id="4">chargeTrays</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="CONFIG" id="13">
+		<objectname>Config</objectname>
+		<params>
+			<param type="string" init="&quot;Config&quot;" classkey="yes">ObjectName</param>
+			<param type="bool" init="true">emptyAmmo</param>
+			<param type="bool" init="true">deActivateMaint</param>
+			<param type="bool" init="true">deActivateAmmoRpl</param>
+			<param type="bool" init="true">c3KillConnection</param>
+			<param type="bool" init="true">pcDartKillConnection</param>
+			<param type="bool" init="false">rebootArcher</param>
+			<param type="bool" init="false">resetDataBase</param>
+			<param type="bool" init="true">resetAmOrdrar</param>
+			<param type="bool" init="false">gotoTrainingMode</param>
+			<param type="bool" init="true">removeFireMission</param>
+			<param type="bool" init="true">removeMet</param>
+			<param type="bool" init="true">removeFireLimits</param>
+			<param type="bool" init="true">removeFarCrest</param>
+			<param type="bool" init="true">removeNearCrest</param>
+			<param type="bool" init="true">removeSCP</param>
+			<param type="bool" init="true">inTransportation</param>
+			<param type="bool" init="true">removeInuGpsAlignWarning</param>
+			<param type="bool" init="true">removeLayingLimits</param>
+			<param type="bool" init="true">sigma30Nav</param>
+			<param type="bool" init="true">defaultAccountExist</param>
+			<param type="bool" init="true">defaultLoginOperator</param>
+			<param type="bool" init="true">gpsTime</param>
+			<param type="bool" init="true">systemActionsOK</param>
+			<param type="bool" init="true">isArmed</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="VERSION" id="14">
+		<objectname>Version</objectname>
+		<params>
+			<param type="string" init="&quot;Version&quot;" classkey="yes">ObjectName</param>
+			<param type="string">component</param>
+			<param type="string">version</param>
+			<param type="string">article</param>
+			<param type="string">osVersion</param>
+			<param type="string">osArticle</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="DDSIGNAL" id="15">
+		<objectname>DDSignal</objectname>
+		<constructor>
+			<param type="string">signalName</param>
+			<param type="string">overrideName</param>
+		</constructor>
+		<init>
+			<method name="dotNET.RTB_RTL.DDSignals.Init" />
+			<method assignTo="this.idOnDD" name="dotNET.RTB_RTL.DDSignals.AddSignal">
+				<param>this.name</param>
+			</method>
+			<method assignTo="this.digital" name="_SIMULATION.DDXml.IsSignalDigital">
+				<param>this.name</param>
+			</method>
+			<method name="_SIMULATION.DDSignals.InitDDSignal">
+				<param>this</param>
+			</method>
+		</init>
+		<params>
+			<param type="string" init="&quot;DDSignal&quot;" classkey="yes">ObjectName</param>
+			<param type="string" init="signalName">name</param>
+			<param type="string" init="overrideName">override</param>
+			<param type="int">idOnDD</param>
+			<param type="int">idOnDDOverride</param>
+			<param type="bool">digital</param>
+			<param type="bool">digitalOverride</param>
+			<param type="var" comment="Can be either float or digital depending on this.digital is true or not.">defaultNameValue</param>
+			<param type="var" comment="Can be either float or digital depending on this.digital is true or not.">defaultOverrideValue</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="METHEADER" id="16">
+		<objectname>MetHeader</objectname>
+		<params>
+			<param type="string" init="&quot;MetHeader&quot;" classkey="yes">ObjectName</param>
+			<param type="string" comment="Met description.">MetDescription</param>
+			<param type="_GENERATED::COORDINATES::Coordinate" comment="_GENERATED::COORDINATES::Coordinate object." validate="_GENERATED.COORDINATES.IsCoordinateObject" id="11">MetStationPosition</param>
+			<param type="Date" comment="Date when the meteorology was measured.">MeasurementTime</param>
+			<param type="int" comment="Time in hours the met is valid, 0-8 in hours and 9 for 12 hours.">MetDuration</param>
+			<param type="int" comment="Met station altitude in meters * 10.">MetStationAltitude</param>
+			<param type="int" comment="Met station pressure in mbar.">MetStationPressure</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="METZONE" id="17">
+		<objectname>MetZone</objectname>
+		<params>
+			<param type="string" init="&quot;MetZone&quot;" classkey="yes">ObjectName</param>
+			<param type="int" comment="Zone number the specified zone has.">ZoneNumber</param>
+			<param type="int" comment="Zone wind direction in mils / 10.">WindDirection</param>
+			<param type="int" comment="Zone wind speed in knots.">WindSpeed</param>
+			<param type="int" comment="Zone temperature in kelvin * 10.">Temperature</param>
+			<param type="int" comment="Zone pressure speed in mbar.">Pressure</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="METEOROLOGY" id="18">
+		<objectname>Meteorology</objectname>
+		<params>
+			<param type="string" init="&quot;Meteorology&quot;" classkey="yes">ObjectName</param>
+			<param type="_GENERATED::METHEADER::MetHeader" comment="_GENERATED::METHEADER::MetHeader object." validate="_GENERATED.METHEADER.IsMetHeaderObject" id="16">MetHeader</param>
+			<param type="_GENERATED::METZONE::MetZone" array="yes" comment="_GENERATED::METZONE::MetZone object." validate="_GENERATED.METHEADER.IsMetZoneObject" id="17">MetZone</param>
+		</params>
+	</class>
+	<class namespace="_GENERATED" classname="NEARCREST" id="19">
+		<objectname>NearCrest</objectname>
+		<params>
+			<param type="string" init="&quot;NearCrest&quot;" classkey="yes">ObjectName</param>
+			<param type="int" comment="Left limit of the near crest in mils.">LeftLimit</param>
+			<param type="int" comment="Right limit of the near crest in mils.">RightLimit</param>
+			<param type="int" comment="Height of the crest in meters.">Elevation</param>
+			<param type="int" comment="Distance to the crest in meters.">Distance</param>
+		</params>
+	</class>
+</classes>

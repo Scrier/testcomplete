@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCLog", "TCLog\TCLog.csproj", "{80C5D31C-939F-4F06-89B2-04B1DC6B0759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLib", "LogLib\LogLib.csproj", "{3020A1FF-58DB-43A4-AC57-E9F2644CD854}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80C5D31C-939F-4F06-89B2-04B1DC6B0759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80C5D31C-939F-4F06-89B2-04B1DC6B0759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80C5D31C-939F-4F06-89B2-04B1DC6B0759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80C5D31C-939F-4F06-89B2-04B1DC6B0759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3020A1FF-58DB-43A4-AC57-E9F2644CD854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3020A1FF-58DB-43A4-AC57-E9F2644CD854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3020A1FF-58DB-43A4-AC57-E9F2644CD854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3020A1FF-58DB-43A4-AC57-E9F2644CD854}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
