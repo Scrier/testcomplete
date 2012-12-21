@@ -20,6 +20,7 @@ namespace JavaExtensionParser
             btn_clear.Enabled = FileExistsRecursive(Directory.GetCurrentDirectory(), "*.old");
             cbx_doBackup.Checked = false;
             cbx_parseXml.Checked = true;
+            cbx_savelog.Checked = false;
             tbx_parseFile.Text = "generate javaclasses.bat";
             tbx_parseFile.Enabled = cbx_parseXml.Checked;
         }
@@ -27,14 +28,14 @@ namespace JavaExtensionParser
         private void btn_exit_Click(object sender, EventArgs e)
         {
             MyLogger.LogAdded -= new EventHandler(MyLogger_LogAdded);
+            ClearLog();
             this.Close();
         }
 
         private void btn_parse_Click(object sender, EventArgs e)
         {
-            rtb_information.Clear();
             btn_parse.Enabled = false;
-            rtb_information.Clear();
+            ClearLog();
             if (true == cbx_parseXml.Checked)
             {
                 try
@@ -130,7 +131,7 @@ namespace JavaExtensionParser
         private void btn_parse_doxygen_Click(object sender, EventArgs e)
         {
             btn_parse_doxygen.Enabled = false;
-            rtb_information.Clear();
+            ClearLog();
             string rootdir = Directory.GetCurrentDirectory();
             try
             {
@@ -170,14 +171,42 @@ namespace JavaExtensionParser
             }
             try
             {
-                Process process = Process.Start("generate doxygen.bat"); // Run the batch file
-                process.WaitForExit();
+                if (DialogResult.OK == MessageBox.Show("Do you want to clear output before generation of doxygen?", "Clear Log", MessageBoxButtons.OKCancel)) {
+                    ClearLog();
+                }
+                Process proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "generate doxygen.bat",
+                        Arguments = "",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true
+                    }
+                };
+                proc.OutputDataReceived += new DataReceivedEventHandler(MyLogger.WriteOutput);
+                proc.ErrorDataReceived += new DataReceivedEventHandler(MyLogger.WriteError);
+                proc.Start();
+                proc.BeginErrorReadLine();
+                proc.BeginOutputReadLine();
+                proc.WaitForExit();
             }
             catch (Exception ex)
             {
                 MyLogger.Alert(ex.Message + Environment.NewLine);
             }
             btn_parse_doxygen.Enabled = true;
+        }
+
+        private void ClearLog()
+        {
+            if (true == cbx_savelog.Checked && 0 < rtb_information.Text.Length)
+            {
+                MyLogger.WriteLogToFile(rtb_information.Text);
+            }
+            rtb_information.Clear();
         }
     }
 }
