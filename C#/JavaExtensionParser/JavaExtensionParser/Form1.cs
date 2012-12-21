@@ -40,8 +40,24 @@ namespace JavaExtensionParser
             {
                 try
                 {
-                    Process process = Process.Start(tbx_parseFile.Text); // Run the batch file
-                    process.WaitForExit();
+                    Process proc = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = tbx_parseFile.Text,
+                            Arguments = "",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            CreateNoWindow = true
+                        }
+                    };
+                    proc.OutputDataReceived += new DataReceivedEventHandler(MyLogger.WriteOutput);
+                    proc.ErrorDataReceived += new DataReceivedEventHandler(MyLogger.WriteError);
+                    proc.Start();
+                    proc.BeginErrorReadLine();
+                    proc.BeginOutputReadLine();
+                    proc.WaitForExit();
                 }
                 catch (Exception ex)
                 {
