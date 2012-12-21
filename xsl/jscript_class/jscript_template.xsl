@@ -112,7 +112,16 @@
 	<xsl:variable name="isArray" select="@array" />
 	
 	<xsl:call-template name="tab" /><xsl:text>//*</xsl:text><xsl:value-of select="$type" /><xsl:text> </xsl:text><xsl:value-of select="." /><xsl:text>;</xsl:text>
-	<xsl:if test="$comment"><xsl:call-template name="tab" /><xsl:text>///&lt; </xsl:text><xsl:value-of select="$comment" /></xsl:if>
+	<xsl:call-template name="tab" />
+	<xsl:text>///&lt; </xsl:text>
+	<xsl:choose>
+		<xsl:when test="$comment">
+			<xsl:value-of select="$comment" />
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:text>[</xsl:text><xsl:value-of select="$type" /><xsl:text>]</xsl:text>
+		</xsl:otherwise>
+	</xsl:choose>
 	<xsl:call-template name="cr" />
 	
 	<xsl:call-template name="tab" /><xsl:text>this.</xsl:text><xsl:value-of select="." />

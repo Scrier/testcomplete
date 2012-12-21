@@ -245,7 +245,7 @@
 	<xsl:value-of select="$namespace" /><xsl:text>.</xsl:text><xsl:value-of select="$classname" />
 	<xsl:text>.GetCopyOf</xsl:text><xsl:value-of select="$objectname" /><xsl:text>(object);</xsl:text><xsl:call-template name="cr" />
 	<xsl:text> * @endcode</xsl:text><xsl:call-template name="cr" />
-	<xsl:text> * @param [in] object </xsl:text><xsl:value-of select="$objectname" /><xsl:text> object.</xsl:text><xsl:call-template name="cr" />
+	<xsl:text> * @param [in] obj2copy </xsl:text><xsl:value-of select="$objectname" /><xsl:text> object.</xsl:text><xsl:call-template name="cr" />
 	<xsl:text> * @return </xsl:text><xsl:value-of select="$objectname" /><xsl:text> object.</xsl:text><xsl:call-template name="cr" />
 	<xsl:text> */</xsl:text><xsl:call-template name="cr" />
 	<xsl:text>function GetCopyOf</xsl:text><xsl:value-of select="$objectname" /><xsl:text>(obj2copy)</xsl:text><xsl:call-template name="cr" />
