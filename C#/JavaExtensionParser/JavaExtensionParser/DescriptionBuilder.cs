@@ -35,10 +35,17 @@ namespace JavaExtensionParser
             PushScriptExtensionGroup();
             foreach (FileInfo file in Path.GetFiles("*.js"))
             {
-                MyLogger.Log("Parsing file " + file.Name + ": " + Environment.NewLine);
-                MyLogger.IncreaseIndent();
-                retValue += file.Name + Environment.NewLine;
-                ParseScriptFile(file);
+                if ( true == file.Name.StartsWith("doc_"))
+                {
+                    MyLogger.Log("Skipping file " + file.Name + ", due to doc_ tag." + Environment.NewLine);
+                }
+                else
+                {
+                    MyLogger.Log("Parsing file " + file.Name + ": " + Environment.NewLine);
+                    MyLogger.IncreaseIndent();
+                    retValue += file.Name + Environment.NewLine;
+                    ParseScriptFile(file);
+                }
             }
             PopScriptExtensionGroup();
             if( null != description ) 
