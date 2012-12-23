@@ -25,7 +25,7 @@ namespace JavaClassEditor
         {
             bool retValue = true;
             ElementName = node.Name;
-            if (XmlNodeType.Text == node.FirstChild.NodeType)
+            if (null != node.FirstChild && XmlNodeType.Text == node.FirstChild.NodeType)
             {
                 ElementValue = node.InnerText;
             }
@@ -43,7 +43,7 @@ namespace JavaClassEditor
                     attributes.Add(attrib);
                 }
             }
-            if (XmlNodeType.Element == node.FirstChild.NodeType)
+            if (null != node.FirstChild && XmlNodeType.Element == node.FirstChild.NodeType)
             {
                 foreach (XmlNode childNode in node.ChildNodes)
                 {

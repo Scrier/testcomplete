@@ -39,7 +39,7 @@ namespace JavaClassEditor
                 {
                     cbx_type.Items.Add(str);
                 }
-                cbx_type.SelectedItem = Element.AttributeType;
+                cbx_type.SelectedItem = ( null == Element.AttributeType ) ? "undefined" : Element.AttributeType;
                 tbx_name.Text = Element.ElementValue;
                 tbx_init.Text = ((null == Element.InitType) ? "" : Element.InitType);
                 tbx_description.Text = ((null == Element.CommentType) ? "" : Element.CommentType);
@@ -50,6 +50,8 @@ namespace JavaClassEditor
         {
             cbx_init.Checked = ((null == Element) ? false : (Element.InitType != null));
             cbx_description.Checked = ((null == Element) ? false : (Element.CommentType != null));
+            cbx_classkey.Checked = ((null == Element) ? false : (Element.ClassKeyType != null && Element.ClassKeyType == "yes"));
+            cbx_array.Checked = ((null == Element) ? false : (Element.Array != null && Element.Array == "yes"));
         }
 
         private void EnableControls()
@@ -72,6 +74,16 @@ namespace JavaClassEditor
         private void cbx_description_CheckedChanged(object sender, EventArgs e)
         {
             tbx_description.Enabled = cbx_description.Checked;
+        }
+
+        private void cbx_classkey_MouseHover(object sender, EventArgs e)
+        {
+            ttp_info_tooltip.Show("Class key is used to identify a specified class by string value, this should never be changed", this);
+        }
+
+        private void cbx_classkey_MouseLeave(object sender, EventArgs e)
+        {
+            ttp_info_tooltip.Hide(this);
         }
 
     }

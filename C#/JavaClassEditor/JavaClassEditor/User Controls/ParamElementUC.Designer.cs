@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_type = new System.Windows.Forms.Label();
             this.lbl_element = new System.Windows.Forms.Label();
             this.tbx_element = new System.Windows.Forms.TextBox();
@@ -38,6 +39,9 @@
             this.tbx_init = new System.Windows.Forms.TextBox();
             this.tbx_description = new System.Windows.Forms.TextBox();
             this.cbx_description = new System.Windows.Forms.CheckBox();
+            this.cbx_array = new System.Windows.Forms.CheckBox();
+            this.cbx_classkey = new System.Windows.Forms.CheckBox();
+            this.ttp_info_tooltip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // lbl_type
@@ -126,10 +130,34 @@
             this.cbx_description.UseVisualStyleBackColor = true;
             this.cbx_description.CheckedChanged += new System.EventHandler(this.cbx_description_CheckedChanged);
             // 
+            // cbx_array
+            // 
+            this.cbx_array.AutoSize = true;
+            this.cbx_array.Location = new System.Drawing.Point(311, 31);
+            this.cbx_array.Name = "cbx_array";
+            this.cbx_array.Size = new System.Drawing.Size(50, 17);
+            this.cbx_array.TabIndex = 11;
+            this.cbx_array.Text = "Array";
+            this.cbx_array.UseVisualStyleBackColor = true;
+            // 
+            // cbx_classkey
+            // 
+            this.cbx_classkey.AutoSize = true;
+            this.cbx_classkey.Location = new System.Drawing.Point(311, 5);
+            this.cbx_classkey.Name = "cbx_classkey";
+            this.cbx_classkey.Size = new System.Drawing.Size(72, 17);
+            this.cbx_classkey.TabIndex = 12;
+            this.cbx_classkey.Text = "Class Key";
+            this.cbx_classkey.UseVisualStyleBackColor = true;
+            this.cbx_classkey.MouseLeave += new System.EventHandler(this.cbx_classkey_MouseLeave);
+            this.cbx_classkey.MouseHover += new System.EventHandler(this.cbx_classkey_MouseHover);
+            // 
             // ParamElementUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbx_classkey);
+            this.Controls.Add(this.cbx_array);
             this.Controls.Add(this.cbx_description);
             this.Controls.Add(this.tbx_description);
             this.Controls.Add(this.tbx_init);
@@ -159,5 +187,8 @@
         private System.Windows.Forms.TextBox tbx_init;
         private System.Windows.Forms.TextBox tbx_description;
         private System.Windows.Forms.CheckBox cbx_description;
+        private System.Windows.Forms.CheckBox cbx_array;
+        private System.Windows.Forms.CheckBox cbx_classkey;
+        private System.Windows.Forms.ToolTip ttp_info_tooltip;
     }
 }

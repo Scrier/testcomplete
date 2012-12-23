@@ -42,9 +42,11 @@ namespace JavaClassEditor
         public List<string> GetParamTypes()
         {
             List<string> retValue = new List<string>();
+            retValue.Add("undefined");
             retValue.Add("int");
             retValue.Add("float");
             retValue.Add("string");
+            retValue.Add("bool");
             retValue.AddRange(PopulateStringList(XmlClassC.Instance.rootElement));
             return retValue;
         }
