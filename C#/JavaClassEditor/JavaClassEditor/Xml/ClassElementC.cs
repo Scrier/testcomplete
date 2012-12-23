@@ -92,5 +92,47 @@ namespace JavaClassEditor
             return this;
         }
 
+        public string GetCompleteName()
+        {
+            string retValue = "";
+            if (null == NameSpace)
+            {
+                MyLoggerC.Alert("Missing Namespace for a class." + Environment.NewLine);
+            }
+            else if ("" == NameSpace) 
+            {
+                MyLoggerC.Alert("Namespace is empty for as class." + Environment.NewLine);
+            }
+            else if (null == ClassName)
+            {
+                MyLoggerC.Alert("Missing Classname for namespace = \"" + NameSpace + "\"." + Environment.NewLine);
+            }
+            else if ("" == ClassName)
+            {
+                MyLoggerC.Alert("Classname is empty for namespace = \"" + NameSpace + "\"." + Environment.NewLine);
+            }
+            else
+            {
+                string classObject = "";
+                foreach (ElementC child in children)
+                {
+                    if ("objectname" == child.ElementName)
+                    {
+                        classObject = child.ElementValue;
+                        break;
+                    }
+                }
+                if ("" == classObject)
+                {
+                    MyLoggerC.Alert("Missing objectname for namespace \"" + NameSpace + "\", and classname \"" + ClassName + "\".");
+                }
+                else
+                {
+                    retValue = NameSpace + "::" + ClassName + "::" + classObject;
+                }
+            }
+            return retValue;
+        }
+
     }
 }

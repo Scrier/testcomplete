@@ -139,6 +139,7 @@
             this.cbx_array.TabIndex = 11;
             this.cbx_array.Text = "Array";
             this.cbx_array.UseVisualStyleBackColor = true;
+            this.cbx_array.CheckedChanged += new System.EventHandler(this.cbx_array_CheckedChanged);
             // 
             // cbx_classkey
             // 
@@ -149,8 +150,11 @@
             this.cbx_classkey.TabIndex = 12;
             this.cbx_classkey.Text = "Class Key";
             this.cbx_classkey.UseVisualStyleBackColor = true;
-            this.cbx_classkey.MouseLeave += new System.EventHandler(this.cbx_classkey_MouseLeave);
-            this.cbx_classkey.MouseHover += new System.EventHandler(this.cbx_classkey_MouseHover);
+            this.cbx_classkey.CheckedChanged += new System.EventHandler(this.cbx_classkey_CheckedChanged);
+            // 
+            // ttp_info_tooltip
+            // 
+            this.ttp_info_tooltip.ShowAlways = true;
             // 
             // ParamElementUC
             // 
@@ -170,6 +174,7 @@
             this.Controls.Add(this.lbl_type);
             this.Name = "ParamElementUC";
             this.Size = new System.Drawing.Size(470, 370);
+            this.Load += new System.EventHandler(this.ParamElementUC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

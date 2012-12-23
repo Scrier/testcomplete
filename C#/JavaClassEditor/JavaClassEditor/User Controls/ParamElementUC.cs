@@ -52,6 +52,7 @@ namespace JavaClassEditor
             cbx_description.Checked = ((null == Element) ? false : (Element.CommentType != null));
             cbx_classkey.Checked = ((null == Element) ? false : (Element.ClassKeyType != null && Element.ClassKeyType == "yes"));
             cbx_array.Checked = ((null == Element) ? false : (Element.Array != null && Element.Array == "yes"));
+            cbx_classkey.Enabled = !cbx_classkey.Checked;
         }
 
         private void EnableControls()
@@ -76,14 +77,44 @@ namespace JavaClassEditor
             tbx_description.Enabled = cbx_description.Checked;
         }
 
-        private void cbx_classkey_MouseHover(object sender, EventArgs e)
+        private void ParamElementUC_Load(object sender, EventArgs e)
         {
-            ttp_info_tooltip.Show("Class key is used to identify a specified class by string value, this should never be changed", this);
+            ttp_info_tooltip.SetToolTip(this.cbx_classkey, "Class key is used to identify a specified class by string value, this should never be changed");
         }
 
-        private void cbx_classkey_MouseLeave(object sender, EventArgs e)
+        private void cbx_classkey_CheckedChanged(object sender, EventArgs e)
         {
-            ttp_info_tooltip.Hide(this);
+            if (true == cbx_classkey.Checked)
+            {
+                ElementC parent = (ElementC)Element.Parent;
+                foreach (ElementC child in parent.children )
+                {
+                    ParamElementC cast = (ParamElementC)child;
+                    if (null != cast.ClassKeyType && "yes" == cast.ClassKeyType && Element.ElementValue != cast.ElementValue )
+                    {
+                        cast.ClassKeyType = null;
+                        MyLoggerC.Log("Moved classkey from parameter \"" + cast.ElementValue + "\" to parameter \"" + Element.ElementValue + "\"." + Environment.NewLine);
+                    }
+                }
+                Element.ClassKeyType = "yes";
+                cbx_classkey.Enabled = false;
+            }
+            else
+            {
+                Element.ClassKeyType = null;
+            }
+        }
+
+        private void cbx_array_CheckedChanged(object sender, EventArgs e)
+        {
+            if (true == cbx_array.Checked)
+            {
+                Element.Array = "yes";
+            }
+            else
+            {
+                Element.Array = null;
+            }
         }
 
     }

@@ -59,7 +59,7 @@ namespace JavaClassEditor
                 if ("class" == c.ElementName)
                 {
                     ClassElementC param = (ClassElementC)c;
-                    retValue.Add(param.NameSpace + "." + param.ClassName);
+                    retValue.Add(param.GetCompleteName());
                 }
                 if (c.children.Count > 0)
                 {
