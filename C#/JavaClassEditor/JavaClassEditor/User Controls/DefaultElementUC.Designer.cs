@@ -34,6 +34,7 @@
             this.tbx_value = new System.Windows.Forms.TextBox();
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
+            this.btn_addparam = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_name
@@ -88,10 +89,22 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
+            // btn_addparam
+            // 
+            this.btn_addparam.Location = new System.Drawing.Point(7, 57);
+            this.btn_addparam.Name = "btn_addparam";
+            this.btn_addparam.Size = new System.Drawing.Size(75, 23);
+            this.btn_addparam.TabIndex = 6;
+            this.btn_addparam.Text = "Add Param";
+            this.btn_addparam.UseVisualStyleBackColor = true;
+            this.btn_addparam.Visible = false;
+            this.btn_addparam.Click += new System.EventHandler(this.btn_addparam_Click);
+            // 
             // DefaultElementUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_addparam);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.tbx_value);
@@ -114,5 +127,6 @@
         private System.Windows.Forms.TextBox tbx_value;
         private System.Windows.Forms.Button btn_edit;
         private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_addparam;
     }
 }

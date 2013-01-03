@@ -46,12 +46,21 @@ namespace JavaClassEditor
                 {
                     btn_edit.Visible = true;
                     btn_save.Visible = true;
+                    btn_addparam.Visible = false;
+                    break;
+                }
+                case "params":
+                {
+                    btn_edit.Visible = false;
+                    btn_save.Visible = false;
+                    btn_addparam.Visible = true;
                     break;
                 }
                 default:
                 {
                     btn_edit.Visible = false;
                     btn_save.Visible = false;
+                    btn_addparam.Visible = false;
                     break;
                 }
             }
@@ -92,6 +101,19 @@ namespace JavaClassEditor
                 element.ElementValue = tbx_value.Text;
                 MyTreeViewControlC.UpdateElement();
             }
+        }
+
+        private void btn_addparam_Click(object sender, EventArgs e)
+        {
+            ParamElementC param = new ParamElementC();
+            param.ElementName = "param";
+            param.ElementValue = "tbd";
+            param.AttributeType = ContextC.Instance.GetParamTypes()[0];
+            param.Text = param.ElementName + " - " + param.ElementValue;
+            element.children.Add(param);
+            element.Nodes.Add(param);
+            MyTreeViewControlC.AddElement(param);
+            element = null;
         }
 
     }

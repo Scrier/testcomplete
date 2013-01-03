@@ -84,6 +84,7 @@
             this.tbx_name.Name = "tbx_name";
             this.tbx_name.Size = new System.Drawing.Size(199, 20);
             this.tbx_name.TabIndex = 5;
+            this.tbx_name.TextChanged += new System.EventHandler(this.tbx_name_TextChanged);
             // 
             // lbl_name
             // 
@@ -111,6 +112,7 @@
             this.tbx_init.Name = "tbx_init";
             this.tbx_init.Size = new System.Drawing.Size(199, 20);
             this.tbx_init.TabIndex = 8;
+            this.tbx_init.TextChanged += new System.EventHandler(this.tbx_init_TextChanged);
             // 
             // tbx_description
             // 
@@ -118,6 +120,7 @@
             this.tbx_description.Name = "tbx_description";
             this.tbx_description.Size = new System.Drawing.Size(199, 20);
             this.tbx_description.TabIndex = 9;
+            this.tbx_description.TextChanged += new System.EventHandler(this.tbx_description_TextChanged);
             // 
             // cbx_description
             // 

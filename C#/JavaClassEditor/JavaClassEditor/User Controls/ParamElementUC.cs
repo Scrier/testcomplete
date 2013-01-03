@@ -117,5 +117,21 @@ namespace JavaClassEditor
             }
         }
 
+        private void tbx_name_TextChanged(object sender, EventArgs e)
+        {
+            Element.ElementValue = tbx_name.Text;
+            Element.Text = Element.ElementName + " - " + Element.ElementValue;
+        }
+
+        private void tbx_init_TextChanged(object sender, EventArgs e)
+        {
+            Element.InitType = tbx_init.Text;
+        }
+
+        private void tbx_description_TextChanged(object sender, EventArgs e)
+        {
+            Element.CommentType = tbx_description.Text;
+        }
+
     }
 }
