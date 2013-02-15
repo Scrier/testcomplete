@@ -34,11 +34,13 @@
             this.tvw_treeview = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pnl_main = new System.Windows.Forms.Panel();
+            this.uc_param = new JavaClassEditor.ParamElementUC();
             this.uc_constructor = new JavaClassEditor.ConstructorElementUC();
             this.uc_class = new JavaClassEditor.User_Controls.ClassElementUC();
             this.uc_classes = new JavaClassEditor.User_Controls.ClassesElementUC();
             this.uc_default = new JavaClassEditor.DefaultElementUC();
-            this.uc_param = new JavaClassEditor.ParamElementUC();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.sfd_SaveFile = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,7 +55,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Load File";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -94,6 +96,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btn_save);
             this.splitContainer1.Panel1.Controls.Add(this.tvw_treeview);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             // 
@@ -118,6 +121,15 @@
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(656, 480);
             this.pnl_main.TabIndex = 2;
+            // 
+            // uc_param
+            // 
+            this.uc_param.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc_param.Location = new System.Drawing.Point(0, 0);
+            this.uc_param.Name = "uc_param";
+            this.uc_param.Size = new System.Drawing.Size(656, 480);
+            this.uc_param.TabIndex = 4;
+            this.uc_param.Visible = false;
             // 
             // uc_constructor
             // 
@@ -155,14 +167,15 @@
             this.uc_default.TabIndex = 0;
             this.uc_default.Visible = false;
             // 
-            // uc_param
+            // btn_save
             // 
-            this.uc_param.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc_param.Location = new System.Drawing.Point(0, 0);
-            this.uc_param.Name = "uc_param";
-            this.uc_param.Size = new System.Drawing.Size(656, 480);
-            this.uc_param.TabIndex = 4;
-            this.uc_param.Visible = false;
+            this.btn_save.Location = new System.Drawing.Point(84, 660);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_save.TabIndex = 3;
+            this.btn_save.Text = "Save File";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // Form1
             // 
@@ -194,6 +207,8 @@
         private User_Controls.ClassElementUC uc_class;
         private ConstructorElementUC uc_constructor;
         private ParamElementUC uc_param;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.SaveFileDialog sfd_SaveFile;
     }
 }
 

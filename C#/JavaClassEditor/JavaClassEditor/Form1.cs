@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace JavaClassEditor
 {
@@ -143,6 +144,26 @@ namespace JavaClassEditor
             uc_class.Visible = false;
             uc_constructor.Visible = false;
             uc_param.Visible = false;
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            switch (sfd_SaveFile.ShowDialog())
+            {
+                case DialogResult.OK:
+                {
+                    StreamWriter writer = new StreamWriter(sfd_SaveFile.FileName);
+                    XmlClassC.Instance.WriteToFile(ref writer);
+                    writer.Flush();
+                    writer.Close();
+                    writer.Dispose();
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
         }
 
     }

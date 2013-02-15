@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Xml;
 using System.Windows.Forms;
+using System.IO;
 
 namespace JavaClassEditor
 {
@@ -126,6 +127,64 @@ namespace JavaClassEditor
         virtual public TreeNode GetTreeNode()
         {
             return this;
+        }
+
+        public bool WriteToFile(ref StreamWriter writer, int indent)
+        {
+            bool retValue = true;
+            writer.WriteLine(GetXmlElementStart(indent));
+            if (0 < this.children.Count)
+            {
+                foreach (ElementC child in children)
+                {
+                    retValue = (retValue ? child.WriteToFile(ref writer, indent + 1) : false);
+                }
+                writer.WriteLine(GetXmlElementEnd(indent));
+            }
+            return retValue;
+        }
+
+        virtual protected string GetXmlElementStart(int indent)
+        {
+            string retValue = GetIndent(indent);
+            retValue += "<" + this.ElementName;
+            if (0 == this.children.Count)
+            {
+                foreach (AttributeC attrib in attributes)
+                {
+                    retValue += " " + attrib.Name + "\"" + attrib.Value + "\"";
+                }
+                if (null != this.ElementValue)
+                {
+                    retValue += ">" + this.ElementValue + "</" + this.ElementName + ">";
+                }
+                else
+                {
+                    retValue += "/>";
+                }
+            }
+            else
+            { 
+            
+            }
+            return retValue;
+        }
+
+        virtual protected string GetXmlElementEnd(int indent)
+        {
+            string retValue = GetIndent(indent);
+            retValue += "</" + this.ElementName + ">";
+            return retValue;
+        }
+
+        protected string GetIndent(int indent)
+        {
+            string retValue = "";
+            for (int i = 0; i < indent; i++)
+            {
+                retValue += "\t";
+            }
+            return retValue;
         }
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Windows.Forms;
+using System.IO;
 
 namespace JavaClassEditor
 {
@@ -57,6 +58,18 @@ namespace JavaClassEditor
         public string DebugText()
         {
             return rootElement.DebugText(0);
+        }
+
+        public bool WriteToFile(ref StreamWriter writer)
+        {
+            bool retValue = true;
+            writer.WriteLine("<classes>");
+            foreach (ElementC child in rootElement.children)
+            {
+                child.WriteToFile(ref writer, 1);
+            }
+            writer.WriteLine("</classes>");
+            return retValue;
         }
 
     }
