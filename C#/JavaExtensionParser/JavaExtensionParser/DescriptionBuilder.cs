@@ -77,6 +77,7 @@ namespace JavaExtensionParser
                 bool mute = false;
                 string comment = @"^(/\*\*| \* | \*\/){1}.*$";
                 string klass = @"^\/\/\*class (.*) {.*$";
+                string _namespace = @"^\/\/\*namespace (.*) {.*$";
                 string strpublic = @"^//\*public:.*$";
                 string strprotected = @"^//\*(protected|private):.*$";
                 string function = @"^function ([A-Za-z0-9_]+)\(.*$";
@@ -85,10 +86,12 @@ namespace JavaExtensionParser
                 // Instantiate the regular expression object.
                 Regex commentRegex = new Regex(comment, RegexOptions.Multiline);
                 Regex klassRegex = new Regex(klass, RegexOptions.Multiline);
+                Regex _namespaceRegex = new Regex(_namespace, RegexOptions.Multiline);
                 Regex publicRegex = new Regex(strpublic, RegexOptions.Multiline);
                 Regex protectedRegex = new Regex(strprotected, RegexOptions.Multiline);
                 Regex functionRegex = new Regex(function, RegexOptions.Multiline);
                 Regex endClassRegex = new Regex(endClass, RegexOptions.Multiline);
+                string NameSpace = null;
 
                 if (true == FileNotBackedUp )
                 {
@@ -120,12 +123,18 @@ namespace JavaExtensionParser
                         }
                         store.Add(line);
                     }
+                    Match NameSpaceMatch = _namespaceRegex.Match(line);
+                    if (NameSpaceMatch.Success)
+                    {
+                        NameSpace = NameSpaceMatch.Groups[1].ToString();
+                    }
                     Match klassMatch = klassRegex.Match(line);
                     if (klassMatch.Success)
                     {
                         if (false == klassFound)
                         {
-                            PushScriptExtension(klassMatch.Groups[1].ToString(), file);
+                            MyLogger.Log("Namespace is: " + NameSpace);
+                            PushScriptExtension(klassMatch.Groups[1].ToString(), file, NameSpace);
                             klassFound = true;
                         }
                         else
@@ -200,7 +209,7 @@ namespace JavaExtensionParser
             input.Add("<ScriptExtensionGroup>");
         }
 
-        private void PushScriptExtension(string objectName, FileInfo filename)
+        private void PushScriptExtension(string objectName, FileInfo filename, string _namespace = null)
         {
             //<ScriptExtension Name ="Alarm Object" Author="Anv" Version="0.1" HomePage ="None">	
             string name = objectName + " Object";
@@ -248,7 +257,14 @@ namespace JavaExtensionParser
             }
             input.Add(tab + "<ScriptExtension Name =\"" + name + "\" Author=\"" + author + "\" Version=\"" + version + "\" HomePage=\"None\">");
             input.Add(tab + tab + "<Script Name =\"" + filename.Name + "\">");
-            input.Add(tab + tab + tab + "<RuntimeObject Name=\"" + objectName + "\" Namespace=\"" + nameSpace + "\">");
+            if (null == _namespace)
+            {
+                input.Add(tab + tab + tab + "<RuntimeObject Name=\"" + objectName + "\" Namespace=\"" + nameSpace + "\">");
+            }
+            else
+            {
+                input.Add(tab + tab + tab + "<RuntimeObject Name=\"" + objectName + "\" Namespace=\"" + _namespace + "\">");
+            }
         }
 
         private void CreateMethod(string line)
