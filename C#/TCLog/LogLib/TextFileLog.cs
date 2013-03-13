@@ -107,6 +107,11 @@ class TextFileLog : ILogInterface
           Write(msg, HDR_TESTSTEP, sss);
   }
 
+  public string GetPicturePath()
+  {
+      return m_fullpath;
+  }
+
   private void Start(string name, bool bVerbose, bool eVerbose, bool tVerbose)
   {
     m_ErrorCount = 0;

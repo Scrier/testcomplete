@@ -37,6 +37,48 @@ class DBLog : ILogInterface
   {
     m_current_ITD_ITR = ITD_ITR;
     m_current_Version = version;
+    string[] split = version.Split('.');
+    if (4 == split.Length)
+    {
+        m_current_Version = split[0] + ".";
+        m_current_Version += split[1];
+        switch (split[2])
+        {
+            case "0":
+            {
+                m_current_Version += "d";
+                break;
+            }
+            case "2":
+            {
+                m_current_Version += "a";
+                break;
+            }
+            case "4":
+            {
+                m_current_Version += "b";
+                break;
+            }
+            case "6":
+            {
+                m_current_Version += "rc";
+                break;
+            }
+            case "8":
+            {
+                break;
+            }
+            default:
+            {
+                m_current_Version += "?";
+                break;
+            }
+        }
+        if ("8" != split[2])
+        {
+            m_current_Version += split[3];
+        }
+    }
     m_misc = misc;
     
     Start(where, what, bVerbose, eVerbose, tVerbose);
@@ -109,6 +151,11 @@ class DBLog : ILogInterface
   {
       if (m_tVerbose)
           Insert_LogItem(msg, HDR_TESTSTEP, sss);
+  }
+
+  public string GetPicturePath()
+  {
+      return m_imagePath;
   }
 
   private void Insert_ITD_ITR(string ITD_ITR, string Version, string Misc)

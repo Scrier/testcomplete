@@ -90,5 +90,10 @@ namespace Custom
         myLog.TestStep(msg, (sss == -1 ? (int?)null : sss));
     }
 
+    static public string GetPicturePath()
+    {
+        return myLog.GetPicturePath();
+    }
+
   }
 }

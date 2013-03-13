@@ -14,6 +14,7 @@ interface ILogInterface
   void Event(string msg, int? sss);
   void TestStep(string msg, int? sss);
   void File(string msg, int? sss, string file);
+  string GetPicturePath();
 
   void Close();
 }
